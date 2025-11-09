@@ -1,45 +1,100 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { icons } from "@/constants/icons";
+import { Tabs } from "expo-router";
+import React from "react";
+import { Image, View } from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+const TabIcon = ({ focused, focusedIcon, title, icon }: any) => {
+  return (
+    <View className="flex flex-1 items-center flex-row justify-center min-w-[112px] overflow-hidden gap-2 ">
+      <Image
+        source={focused ? focusedIcon : icon}
+        tintColor={focused ? "#d1d5db" : "#3b82f6"}
+      />
+    </View>
+  );
+};
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const _layout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontFamily: "PoppinsMedium",
+          color: "#d1d5db",
+        },
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarItemStyle: {
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        tabBarStyle: {
+          backgroundColor: "#1d4ed8",
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Dashboard",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              focusedIcon={icons.dashboard_filled}
+              focused={focused}
+              icon={icons.dashboard}
+              title="Dashboard"
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="courses"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Courses",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              focusedIcon={icons.book_filled}
+              focused={focused}
+              icon={icons.book}
+              title="Courses"
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="results"
+        options={{
+          title: "Results",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              focusedIcon={icons.result_filled}
+              focused={focused}
+              icon={icons.result}
+              title="Courses"
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              focusedIcon={icons.profile_filled}
+              focused={focused}
+              icon={icons.profile1}
+              title="Profile"
+            />
+          ),
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default _layout;
