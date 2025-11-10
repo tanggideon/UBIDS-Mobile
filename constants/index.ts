@@ -172,6 +172,42 @@ export const resultData = [
     ],
   },
 ];
+export const Quizzes = [
+  {
+    id: "1",
+    title: "Quiz 1 - Introduction to Python Programming",
+    studentsCount: 255,
+    score: 0,
+    allocated: 10,
+    deadline: "11:59pm Today",
+    duration: 30,
+    createdBy: "Jonas Asiedu",
+    questions: [
+      {
+        id: "q1",
+        question: "What is Python?",
+        options: [
+          "A programming language",
+          "A type of snake",
+          "A web framework",
+          "A database"
+        ],
+        correctOptionIndex: 0
+      },
+      {
+        id: "q2",
+        question: "Which of the following is a Python data type?",
+        options: [
+          "Integer",
+          "String",
+          "List",
+          "All of the above"
+        ],
+        correctOptionIndex: 3
+      }
+    ]
+  }
+]
 
 export const courseInformation = [
   {
@@ -204,6 +240,18 @@ export const courseInformation = [
         name: "Past Questions 2020 - 2024",
         docType: "file/pdf",
         numberOfPages: 22
+      }
+    ],
+    quizzes: [
+      {
+        id: 1,
+        title: "Quiz 1 - Introduction to Python Programming",
+        studentsCount: 255,
+        score: 0,
+        allocated: 10,
+        deadline: "11:59pm Today",
+        duration: 30
+
       }
     ]
   },
