@@ -30,6 +30,9 @@ export default function RootLayout() {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="screens/quiz/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="screens/registration/index" options={{ headerShown: false }} />
+      <Stack.Screen name="screens/fees/index" options={{ headerShown: false }} />
+      <Stack.Screen name="screens/timetable/index" options={{ headerShown: false }} />
     </Stack>
   );
 }

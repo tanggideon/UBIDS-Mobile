@@ -1,4 +1,5 @@
 import { icons } from "@/constants/icons";
+import { router } from "expo-router";
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -75,7 +76,12 @@ const Profile = () => {
           </View>
         </View>
         <View className="flex flex-col gap-3 mt-5">
-          <TouchableOpacity className="flex flex-row justify-between items-center p-5 flex-1 gap-5 rounded-xl bg-gray-100">
+          <TouchableOpacity
+            className="flex flex-row justify-between items-center p-5 flex-1 gap-5 rounded-xl bg-gray-100"
+            onPress={() => {
+              router.push("/screens/registration");
+            }}
+          >
             <Text className="font-PoppinsSemiBold text-md text-gray-500 ">
               Course Registration
             </Text>
@@ -85,7 +91,12 @@ const Profile = () => {
               className="h-5 w-5"
             />
           </TouchableOpacity>
-          <TouchableOpacity className="flex flex-row justify-between items-center p-5 flex-1 gap-5 rounded-xl bg-gray-100">
+          <TouchableOpacity
+            className="flex flex-row justify-between items-center p-5 flex-1 gap-5 rounded-xl bg-gray-100"
+            onPress={() => {
+              router.push("/screens/fees");
+            }}
+          >
             <Text className="font-PoppinsSemiBold text-md text-gray-500 ">
               Fee Information
             </Text>
@@ -95,8 +106,15 @@ const Profile = () => {
               className="h-5 w-5"
             />
           </TouchableOpacity>
-          <View className="bg-gray-50 h-52 rounded-md"></View>
-          <TouchableOpacity className="flex flex-row justify-between items-center p-5 flex-1 gap-5 rounded-xl bg-gray-100">
+          <Text className="font-PoppinsSemiBold text-sm text-blue-500 ">
+            Alerts
+          </Text>
+          <View className="bg-gray-50 h-52 rounded-md">
+            <ScrollView className="p-5 flex flex-col gap-3"></ScrollView>
+          </View>
+          <TouchableOpacity className="flex flex-row justify-between items-center p-5 flex-1 gap-5 rounded-xl bg-gray-100" onPress={() => {
+              router.push("/screens/timetable");
+            }}>
             <Text className="font-PoppinsSemiBold text-md text-gray-500 ">
               Lecture Timetable
             </Text>

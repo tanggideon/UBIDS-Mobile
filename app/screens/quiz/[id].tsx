@@ -2,7 +2,7 @@ import Header from "@/app/components/header";
 import { Quizzes } from "@/constants";
 import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // create a different table for quizzes and use id to get the quiz
@@ -31,6 +31,9 @@ const Quiz = () => {
   const quiz = Quizzes.find((quiz) => quiz.id === id);
   const questionList = quiz?.questions || [];
   const [Start, setStart] = useState(false);
+
+const [answeredQuestions, setAnsweredQuestions] = useState<{ [key: string]: number }>({});
+
   const rules = [
     "Read all instructions carefully before starting the quiz.",
     "All questions are mandatory unless specified otherwise.",
@@ -43,9 +46,17 @@ const Quiz = () => {
   if (!Start) {
     return <QuizDetails setStart={setStart} quiz={quiz} rules={rules} />;
   }
+  const RecordAnswers = (QuestionID: string, OptionID: number) => {
+  setAnsweredQuestions((prev) => ({
+    ...prev,
+    [QuestionID]: OptionID,
+  }));
+  console.log(answeredQuestions);
+};
+
   return (
     <SafeAreaView className="w-full min-h-screen bg-white">
-      <Header title="Quiz Details" back={true} />
+      <Header title={Start ? "Quiz Started" : "Quiz Details"} back={true} />
       <ScrollView className="w-full p-5 flex flex-col gap-5">
         {questionList.map((question, index) => (
           <View key={question.id} className="w-full">
@@ -54,17 +65,22 @@ const Quiz = () => {
             </Text>
             <View className="w-full flex flex-col gap-3">
               {question.options.map((option, optionIndex) => (
-                <View
+                <Pressable
+                  onPress={() => {
+                    RecordAnswers(question.id, optionIndex);
+                  }}
                   key={optionIndex}
-                  className="flex flex-row gap-3 items-center"
+                  className={`flex flex-row gap-3 items-center ${answeredQuestions[question.id] === optionIndex ? "bg-blue-200" : "bg-gray-100"}  p-3 rounded-md`}
                 >
-                  <View className="h-5 w-5 border-2 border-gray-400 rounded-full items-center justify-center">
+                  <View
+                    className={`h-5 w-5 border-2 border-gray-400 rounded-full items-center justify-center `}
+                  >
                     <View className="h-3 w-3 bg-gray-400 rounded-full" />
                   </View>
-                  <Text className="font-PoppinsRegular text-gray-600">
+                  <Text className="font-PoppinsRegular text-gray-700">
                     {option}
                   </Text>
-                </View>
+                </Pressable>
               ))}
             </View>
             <View className="h-1 bg-gray-200 w-full my-5" />

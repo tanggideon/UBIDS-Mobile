@@ -1,6 +1,6 @@
 import { resultData } from "@/constants";
 import React, { useState } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../components/header";
 
@@ -20,8 +20,8 @@ const Results = () => {
             <View className="flex flex-col gap-3">
               {result.result.map((item, index) => (
                 <View key={index}>
-                  <TouchableOpacity
-                    className="flex flex-col rounded-t-md w-full h-fit p-5 gap-3 bg-blue-100"
+                  <Pressable
+                    className="flex flex-col rounded-t-md w-full h-fit p-5 gap-3 bg-blue-100 "
                     onPress={() => setActiveResult(item.id)}
                   >
                     <Text className="font-PoppinsBold text-lg text-blue-400">
@@ -45,7 +45,7 @@ const Results = () => {
                         </Text>
                       </View>
                     </View>
-                  </TouchableOpacity>
+                  </Pressable>
                   <View
                     className={`p-3 ${activeResult === item.id ? "" : "hidden"}`}
                   >

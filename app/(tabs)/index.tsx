@@ -3,6 +3,7 @@ import { images } from "@/constants/images";
 import { router } from "expo-router";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import PerformanceChart from "../components/PerformanceChart";
 
 export default function HomeScreen() {
   const currentDate = new Date();
@@ -98,8 +99,9 @@ export default function HomeScreen() {
           Student Assessment
         </Text>
         <View className="mt-3 w-full rounded-lg flex items-center justify-center flex-col gap-5">
-          <View className="bg-blue-400 h-28 rounded-lg w-full relative"></View>
-          <View className="bg-blue-400 h-28 rounded-lg w-full"></View>
+          <View className="h-fit rounded-lg w-full relative">
+            <PerformanceChart />
+          </View>
         </View>
         <Text className="text-center text-gray-500 mt-5 font-PoppinsBold text-xs">
           Student Credentials
@@ -134,6 +136,14 @@ export default function HomeScreen() {
             </Text>
             <Text className="font-PoppinsSemiBold text-sm bg-blue-200 text-blue-500 p-2 rounded-full">
               Good Ethical Standing
+            </Text>
+          </View>
+          <View className="flex flex-row gap-5 w-full items-center justify-between">
+            <Text className="font-PoppinsSemiBold text-sm">
+              Academic Standing:
+            </Text>
+            <Text className="font-PoppinsSemiBold text-sm bg-green-200 text-green-500 p-2 rounded-full">
+              Probation
             </Text>
           </View>
           <View className="flex flex-row gap-5 w-full items-center justify-between">

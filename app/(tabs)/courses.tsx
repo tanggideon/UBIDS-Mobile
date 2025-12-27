@@ -1,16 +1,17 @@
 import { courseInformation } from "@/constants";
 import { useRouter } from "expo-router";
 import React from "react";
-import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Search from "../components/search";
 
 const courses = courseInformation;
 
-const router = useRouter();
 
 const Courses = () => {
+  const router = useRouter();
   return (
+    <ImageBackground className="flex-1">
     <SafeAreaView className="flex-1 bg-white">
       <View className="h-[200px] rounded-br-[50px] w-full bg-blue-600 p-10">
         <Text className="font-PoppinsBold text-5xl text-blue-200">Courses</Text>
@@ -84,7 +85,7 @@ const Courses = () => {
           </TouchableOpacity>
         )}
       />
-    </SafeAreaView>
+    </SafeAreaView></ImageBackground>
   );
 };
 

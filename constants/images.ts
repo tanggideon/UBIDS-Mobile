@@ -1,3 +1,5 @@
+import bg1 from "@/assets/images/bg1.jpg"
+import bg2 from "@/assets/images/bg2.jpg"
 import community_development from "@/assets/images/community_development.jpg"
 import environmental_sanitation from "@/assets/images/environmental_sanitation.jpg"
 import health_policy from "@/assets/images/health_policy.jpg"
@@ -8,5 +10,6 @@ export const images = {
     community_development,
     environmental_sanitation,
     health_policy,
-
+    bg2,
+    bg1,
 }

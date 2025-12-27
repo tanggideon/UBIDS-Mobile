@@ -5,9 +5,9 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 
-const router = useRouter();
 
 const CourseDetails = () => {
+  const router = useRouter();
   const { id } = useLocalSearchParams();
   const courseDetails = courseInformation.find((course) => course.code === id);
 
@@ -23,6 +23,7 @@ const CourseDetails = () => {
   return (
     <View className="flex-1 bg-white">
       <View className="w-full h-60 relative">
+        {/* <Header back={true} title={courseDetails.code}/> */}
         <Image
           source={courseDetails.image}
           className="absolute inset-0 z-0 w-full h-full"

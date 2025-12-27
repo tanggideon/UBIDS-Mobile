@@ -1,4 +1,4 @@
-import { useNavigation } from "expo-router";
+import { useRouter } from "expo-router";
 import React from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -33,7 +33,8 @@ const chatData = [
 ];
 
 const Chat = () => {
-  const navigation = useNavigation;
+  const router = useRouter();
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <Header title="Chats" back />
@@ -57,14 +58,12 @@ const Chat = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => {
-              // navigation.navigate("app/chats/[id]", { id: item.id });
-            }}
+            onPress={() => router.push(`/screens/chat/${item.id}`)}
             className="p-5 border-b border-gray-200 flex flex-row items-center justify-between gap-3"
           >
             <View className="flex-1 overflow-hidden">
               <Text
-                className="font-semibold text-base text-ellipsis "
+                className="font-semibold text-base text-ellipsis"
                 numberOfLines={1}
               >
                 {item.name}
@@ -79,7 +78,7 @@ const Chat = () => {
             <View className="flex items-end">
               <Text className="text-gray-400 text-sm">{item.timestamp}</Text>
               <View className="h-5 w-5 mt-2 flex items-center justify-center bg-blue-500 rounded-full">
-                <Text className="text-white text-xs font-PoppinsBold ">2</Text>
+                <Text className="text-white text-xs font-PoppinsBold">2</Text>
               </View>
             </View>
           </TouchableOpacity>
